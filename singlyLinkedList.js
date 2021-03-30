@@ -182,17 +182,28 @@ class singleList {
     }
 }
 let newList = new singleList();
-newList.push('stuf');
-newList.push('stoop');
-newList.push('stuf');  
-newList.push('stu');
-newList.push('store');
-newList.pop();
-newList.unshift('val');
-newList.set(2,'thing');
-newList.get(2);
-newList.set(2,'thing');
-newList.get(2);
-console.log(newList);
-newList.reverse()
-newList.print();
+// newList.push('stuf');
+// newList.push('stoop');
+// newList.push('stuf');  
+// newList.push('stu');
+// newList.push('store');
+// newList.pop();
+// newList.unshift('val');
+// newList.set(2,'thing');
+// newList.get(2);
+// newList.set(2,'thing');
+// newList.get(2);
+// console.log(newList);
+// newList.reverse()
+// newList.print();
+
+var replaceDots = function(str) {
+    let sent = str.split('');
+    for(let i = 0; i < sent.length; i++){
+      if(sent[i] === '.'){
+        sent[i] = '-';
+      }
+    }
+    return sent.join('')
+  }
+  console.log(replaceDots("the.bad cat. ate .the donuts."))
