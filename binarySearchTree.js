@@ -7,14 +7,14 @@ class Node{
 }
 
 class BinarySearchTree{
-    constructor(value){
+    constructor(){
         this.root = null;
     }
 
     insert(value){
         let newNode = new Node(value);
         let current = this.root;
-        if(current === null){
+        if(!current){
             current = newNode;
             return this;
         }
@@ -23,18 +23,36 @@ class BinarySearchTree{
             if(current.value < value){
                 if(current.right === null){
                     current.right = newNode;
+                    return this;
                 }
                 current = current.right;
-                return this;
             }
             if(current.value > value){
                 if(current.left === null){
                     current.left = newNode;
+                    return this;
                 }
-                current = current.left;
-                return this;
+                current = current.left; 
             }
         }
+    }
+
+    find(value){
+        let current = this.root;
+        let found = false;
+        if(!current) return false;
+        while(current && !found){
+            if(current.value > value){
+                current = current.left;
+            }
+           else if(current.value < value){
+                current = current.right;
+            }
+            else{
+                 return true;
+            }
+        }
+        return false;
     }
 }
 //         tree
