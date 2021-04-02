@@ -31,3 +31,34 @@ function same(arr1,arr2){
 // same([1,2,3], [4,4,1]); false
 // same([1,6,3], [4,9,1]); false
 // same([1,2,3], [4,9]); false
+
+function validAnagram(x,y){
+    if(x.length !== y.length) return false;
+
+    let counter1 = {};
+    let counter2 = {};
+
+    for(let val of x){
+        counter1[val] = (counter1[val] || 0) + 1;
+    }
+    
+    for (let val of y){
+        counter2[val] = (counter2[val] || 0) + 1;
+    }
+
+   for(let val in counter1){
+       if(!(val in counter2)){
+           return false;
+       }
+       if(counter1[val] !== counter2[val]){
+           return false;
+       }
+   }
+
+    return true;
+}
+
+validAnagram('car','rat');
+validAnagram('azz','zaz');
+validAnagram('azz','za');
+validAnagram('aaa','zaz');
