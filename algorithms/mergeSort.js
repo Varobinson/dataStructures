@@ -44,4 +44,38 @@ function mergeSort(arr){
 
 mergeSort([1,2,3,4,5,6,7,8])
 
+// ES6 
 
+const sort = (arr1,arr2) => {
+    let idx1 = 0;
+    let idx2 = 0;
+    let results = [];
+
+    while(arr1.length > idx1 && arr2.length > idx2){
+        if(arr1[idx1] > arr2[idx2]){
+            results.push(arr2[idx2]);
+            idx2++;
+        }else{
+            results.push(arr1[idx1]);
+            idx1++;
+        }
+    }
+
+    while(arr1.length > idx1){
+        results.push(arr1[idx1]);
+        idx1++;
+    }
+
+    while(arr2.length > idx2){
+        results.push(arr2[idx2]);
+        idx2++;
+    }
+   return results;
+};
+const mSort = (arr) => {
+    if(arr.length <= 1) return arr;
+    let mid = Math.floor(arr.length / 2 );
+    let left = mSort(arr.slice(0,mid));
+    let right = mSort(arr.slice(mid));
+    return sort(left, right);
+};

@@ -6,13 +6,13 @@
 //     }
 // }
 
-// // let first = new Node('hi')
-// // first.next = new Node('there') 
-// // first.next.next = new Node('how') 
-// // first.next.next.next = new Node('are') 
-// // first.next.next.next.next = new Node('you') 
+// let first = new Node('hi')
+// first.next = new Node('there') 
+// first.next.next = new Node('how') 
+// first.next.next.next = new Node('are') 
+// first.next.next.next.next = new Node('you') 
 
-// // console.log(first)
+// console.log(first)
 
 // class SinglyLinkedList{
 //     constructor(){
@@ -44,8 +44,8 @@
 // }
 
 // let list = new SinglyLinkedList()
-// // list.push('hello')
-// // list.push('goodbye')
+// list.push('hello')
+// list.push('goodbye')
 
 // console.log(list.push('hello'))
 // console.log(list.push('hello'))
@@ -85,7 +85,7 @@ class singleList {
             current = current.next;
         }
             this.tail = pre;
-            this.tail.next = null
+            this.tail.next = null;
             this.length--;
             if(this.length == 0){
                 this.head =null;
