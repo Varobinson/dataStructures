@@ -1,12 +1,21 @@
 const names =['bob', 'jill','mac', 'pete'];
 
-const checkName = name => names.indexOf(name) >= 0 ? true : false; 
+const checkName = name => names.indexOf(name); //loops until find
 
-   console.log(checkName('joe'));
+   console.log(checkName('joe')); //prints -1
 
 // more readable
-const checkName = (name) => { 
-    return names.indexOf(name) >= 0 ? true : false;
+const checkName2 = (name) => { 
+    return names.indexOf(name);
 } 
 
-   console.log(checkName('joe'));
+   console.log(checkName2('joe')); //prints -1
+   console.log(checkName2('jill')); //prints 1
+
+
+const checkName3 = (name) => { 
+    return names.includes(name); //loops over every item in list
+} 
+
+console.log(checkName3('jill')); //returns true
+console.log(checkName3('joe')); //returns false

@@ -1,13 +1,13 @@
-const names =['bob', 'jill','mac', 'pete'];
+let numbers = [1,2,3,4,5,6,7,8,9];
 
-const checkName = name => names.indexOf(name) >= 0 ? true : false; 
 
-   console.log(checkName('joe'));
+const linearSearch = (arr, value) => {
+    for(let i = 0; i < arr.length;i++){
+        if (arr[i] == value){
+            return true;
+        }
+    }
+    return false;
+}
 
-// more readable
-const checkName = (name) => { 
-    return names.indexOf(name) >= 0 ? true : false;
-} 
-
-   console.log(checkName('joe'));
-   
+console.log(linearSearch(numbers,12))
