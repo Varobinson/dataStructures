@@ -30,3 +30,18 @@ function merge2SortedArrays(arr1,arr2){
     }
     return result;
 }
+
+//Merge sort recursively
+
+function mergeSort(arr){
+    if(arr <= 1) return arr;
+    let mid = Math.Floor(arr1.length / 2);
+    let left = mergeSort(arr.slice(0,mid));
+    let right = mergeSort(arr.slice(mid));
+    return merge(left, right);
+}
+
+
+mergeSort([1,2,3,4,5,6,7,8])
+
+
