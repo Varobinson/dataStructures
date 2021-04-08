@@ -51,159 +51,251 @@
 // console.log(list.push('hello'))
 
 
+// class Node{
+//     constructor(val){
+//         this.val = val;
+//         this.next = null;
+//     }
+// }
+
+// class singleList {
+//     constructor(){
+//         this.tail = null;
+//         this.head = null;
+//         this.length = 0;
+//     }
+//     push(val){
+//         let input = new Node(val);
+//         if(!this.head){
+//             this.head = input;
+//             this.tail = this.head;
+//         } else {
+//             this.tail.next = input;
+//             this.tail = input;
+//         }
+//         this.length++;
+//         return this;
+//     }
+//     pop(){
+//         if(!this.head) return undefined;
+//         let current = this.head;
+//         let pre = current;
+//         while(current.next){
+//             pre = current;
+//             current = current.next;
+//         }
+//             this.tail = pre;
+//             this.tail.next = null;
+//             this.length--;
+//             if(this.length == 0){
+//                 this.head =null;
+//                 this.tail =null;
+//             }
+//             return current;
+//     }
+//     shift(){
+//         if(!this.head) return undefined;
+//         let oldHead = this.head;
+//         this.head = oldHead.next;
+//         this.length--;
+//         if(this.length == 0){
+//             this.tail =null;
+//         }
+//         return oldHead;
+//     }
+//     unshift(val){
+//         let input = new Node(val);
+//         let currentHead = this.head;
+//         if(!this.head){
+//             this.head = input;
+//             this.tail = this.head;
+//         } 
+//         this.head = input;
+//         input.next = currentHead;
+//         this.length++;
+//         return this;
+//     }
+//     get(value){
+//         if(value < 0 || value >= this.length) return null;
+//         let counter = 0
+//         let current = this.head;
+//         while(counter !== value){
+//             current = current.next;
+//             counter++;
+//         }
+//         return current;
+//     }
+//     set(value, input){
+//         let node = this.get(value);
+//         if(node){
+//             node.val = input;
+//             return true;
+//         }
+//         return false;
+//     }
+//     insert(value, input){
+//         if(value < 0 || value > this.length) return false;
+//         if(value === this.length) return !!this.push(input); 
+//         if(value === 0) return !!this.unshift(input);
+
+//             let newNode = new Node(input) 
+//             let firstNode = this.get(value - 1);
+//             let temp = firstNode.next
+//             firstNode.next = newNode;
+//             newNode.next = temp
+//             this.length++;
+//             return true;
+
+//     }
+//     remove(value){
+//         if(value < 0 || value >= this.length) return undefined;
+//         if(value === 0) return this.shift();
+//         if(value === this.length - 1) return this.pop();
+        
+//         let preNode = this.get(value - 1);
+//         let removed = preNode.next;
+//         preNode.next = removed.next;
+//         this.length--;
+//         return removed;
+//     }
+//     reverse(){
+//         let node = this.head;
+//         this.head = this.tail;
+//         this.tail = node;
+//         let pre = null;
+//         let next;
+//         for(let i = 0; i < this.length; i++){
+//             next = node.next;
+//             node.next = pre;
+//             pre = node;
+//             node = next;
+//         }
+//     }
+//     print(){
+//         let arr = [];
+//         let current = this.head
+//         while(current){
+//             arr.push(current.val)
+//             current = current.next
+//         }
+//         console.log(arr);
+//     }
+// }
+// let newList = new singleList();
+// // newList.push('stuf');
+// // newList.push('stoop');
+// // newList.push('stuf');  
+// // newList.push('stu');
+// // newList.push('store');
+// // newList.pop();
+// // newList.unshift('val');
+// // newList.set(2,'thing');
+// // newList.get(2);
+// // newList.set(2,'thing');
+// // newList.get(2);
+// // console.log(newList);
+// // newList.reverse()
+// // newList.print();
+
+// var replaceDots = function(str) {
+//     let sent = str.split('');
+//     for(let i = 0; i < sent.length; i++){
+//       if(sent[i] === '.'){
+//         sent[i] = '-';
+//       }
+//     }
+//     return sent.join('')
+//   }
+//   console.log(replaceDots("the.bad cat. ate .the donuts."))
+
+
+
+
 class Node{
-    constructor(val){
-        this.val = val;
+    constructor(value){
+        this.value = value;
         this.next = null;
     }
 }
 
-class singleList {
+class SSL{
     constructor(){
-        this.tail = null;
         this.head = null;
-        this.length = 0;
+        this.tail = null;
+        this.size = 0;
     }
+    
+
     push(val){
-        let input = new Node(val);
+        let newNode = new Node(val);
         if(!this.head){
-            this.head = input;
+            this.head = newNode;
             this.tail = this.head;
-        } else {
-            this.tail.next = input;
-            this.tail = input;
+        }else{
+            this.tail.next = newNode;
+            this.tail = newNode;
         }
-        this.length++;
+        this.size++;
         return this;
     }
+
     pop(){
-        if(!this.head) return undefined;
-        let current = this.head;
-        let pre = current;
-        while(current.next){
-            pre = current;
-            current = current.next;
-        }
-            this.tail = pre;
-            this.tail.next = null;
-            this.length--;
-            if(this.length == 0){
-                this.head =null;
-                this.tail =null;
-            }
-            return current;
+       if(!this.head) return undefined; 
+       let curr = this.head;
+       let newTail = curr;
+       while(curr.next){
+           newTail = curr;
+           curr = curr.next;
+       }
+       this.tail = newTail;
+       this.tail.next = null;
+       this.size--;
+       if(this.size === 0){
+           this.head = null;
+           this.tail = null;
+       }
+       return curr;
     }
+
     shift(){
         if(!this.head) return undefined;
-        let oldHead = this.head;
-        this.head = oldHead.next;
-        this.length--;
-        if(this.length == 0){
-            this.tail =null;
+        let curr = this.head;
+        this.head = curr.next;
+        this.size--;
+        if(this.size === 0){
+            this.tail = null;
         }
-        return oldHead;
+        return curr;
     }
+
     unshift(val){
-        let input = new Node(val);
-        let currentHead = this.head;
+        let newNode = new Node(val);
         if(!this.head){
-            this.head = input;
+            this.head = newNode;
             this.tail = this.head;
-        } 
-        this.head = input;
-        input.next = currentHead;
-        this.length++;
-        return this;
+        };
+        let curr = this.head;
+        this.head = newNode;
+        newNode.next = curr;
+        this.size++;
     }
-    get(value){
-        if(value < 0 || value >= this.length) return null;
-        let counter = 0
-        let current = this.head;
-        while(counter !== value){
-            current = current.next;
+
+    get(val){
+        if(val >= this.size || val === 0) return undefined;
+        let counter = 0;
+        let curr = this.head;
+        while(counter !== val){
+            curr = curr.next;
             counter++;
         }
-        return current;
-    }
-    set(value, input){
-        let node = this.get(value);
-        if(node){
-            node.val = input;
-            return true;
-        }
-        return false;
-    }
-    insert(value, input){
-        if(value < 0 || value > this.length) return false;
-        if(value === this.length) return !!this.push(input); 
-        if(value === 0) return !!this.unshift(input);
-
-            let newNode = new Node(input) 
-            let firstNode = this.get(value - 1);
-            let temp = firstNode.next
-            firstNode.next = newNode;
-            newNode.next = temp
-            this.length++;
-            return true;
-
-    }
-    remove(value){
-        if(value < 0 || value >= this.length) return undefined;
-        if(value === 0) return this.shift();
-        if(value === this.length - 1) return this.pop();
-        
-        let preNode = this.get(value - 1);
-        let removed = preNode.next;
-        preNode.next = removed.next;
-        this.length--;
-        return removed;
-    }
-    reverse(){
-        let node = this.head;
-        this.head = this.tail;
-        this.tail = node;
-        let pre = null;
-        let next;
-        for(let i = 0; i < this.length; i++){
-            next = node.next;
-            node.next = pre;
-            pre = node;
-            node = next;
-        }
-    }
-    print(){
-        let arr = [];
-        let current = this.head
-        while(current){
-            arr.push(current.val)
-            current = current.next
-        }
-        console.log(arr);
+        return curr;
     }
 }
-let newList = new singleList();
-// newList.push('stuf');
-// newList.push('stoop');
-// newList.push('stuf');  
-// newList.push('stu');
-// newList.push('store');
-// newList.pop();
-// newList.unshift('val');
-// newList.set(2,'thing');
-// newList.get(2);
-// newList.set(2,'thing');
-// newList.get(2);
-// console.log(newList);
-// newList.reverse()
-// newList.print();
+let newlist = new SSL();
+newlist.push(1);
+newlist.push(2);
+newlist.push(3);
+newlist.push(4);
+newlist.get(2);
+console.log(newlist.get(2))
 
-var replaceDots = function(str) {
-    let sent = str.split('');
-    for(let i = 0; i < sent.length; i++){
-      if(sent[i] === '.'){
-        sent[i] = '-';
-      }
-    }
-    return sent.join('')
-  }
-  console.log(replaceDots("the.bad cat. ate .the donuts."))
