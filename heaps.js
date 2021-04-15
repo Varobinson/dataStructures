@@ -1,30 +1,74 @@
-// //max binary heap
+//max binary heap
 
-// class MaxBinaryHeap{
-//     constructor(){
-//         this.values = [41,39,33,18,27,12];
-//     }
+class MaxBinaryHeap{
+    constructor(){
+        this.values = [55,39,41,18,27,12,33];
+    }
 
-//     insert(value){
-//         const arr = this.values;
-//         arr.push(value);
-//         let idx = arr.length - 1;
-//         const element = arr[idx];
-//         while(idx > 0){
-//             let parentIdx = Math.floor((idx - 1) /2);
-//             let parent = arr[parentIdx]
-//             if(element <= parent) break;
-//             arr[parentIdx] = element;
-//             arr[idx] = parent;
-//             idx = parentIdx; 
-//         }
-//         return arr;
-//     }
-// }
+    insert(value){
+        const arr = this.values;
+        arr.push(value);
+        let idx = arr.length - 1;
+        const element = arr[idx];
+        while(idx > 0){
+            let parentIdx = Math.floor((idx - 1) /2);
+            let parent = arr[parentIdx]
+            if(element <= parent) break;
+            arr[parentIdx] = element;
+            arr[idx] = parent;
+            idx = parentIdx; 
+        }
+        return arr;
+    }
 
-// let maxHeap = new MaxBinaryHeap();
+    swap(){
+        let arr = this.values;
+        let currIdx = 0; 
+        const length = arr.length;
+        const curr = arr[0]
 
-// console.log(maxHeap.insert(55));
+        while(true){
+            let child1Idx = (2 * currIdx) + 1;
+            let child2Idx = (2 * currIdx) + 2;
+            let child1 ,child2; 
+            let swap = null;
+
+            if( child1Idx < length){
+                child1 = arr[child1Idx];
+                if(child1 > curr){
+                    swap = child1Idx;
+                }
+            } 
+            if(child2Idx < length){
+                child2 = arr[child2Idx];
+                if(
+                    (swap === null && child2 > curr) || 
+                    (swap !== null && child2 > child1)){
+                    swap = child2Idx;
+                }
+            }
+            if(swap === null) break;
+            arr[currIdx] = arr[swap];
+            arr[swap] = curr;
+            currIdx = swap;
+       }
+    }
+
+    extractMax(){
+        const arr = this.values;
+        const maxVal = arr[0];
+        const lastVal = arr.pop();
+        arr[0] = lastVal;
+        this.swap();
+        return maxVal;
+    }
+
+    
+}
+
+let maxHeap = new MaxBinaryHeap();
+
+console.log(maxHeap.extractMax(),maxHeap.values);
 
 
 // min binary heap
@@ -76,12 +120,13 @@ class MaxHeap{
             let parent = array[parentIdx]; //37
             if(parent > child) break;  //37 > 80
             array[childIdx] = parent;  // 80 = 37  [60,55,37,30,25,29,37]
-            array[parentIdx] = child;
+            array[parentIdx] = child; //37 = 80 [60,55,80,30,25,29,37]
             childIdx = parentIdx; // 6 = 2
         }
         return array;
     }
+    
 }
 
-let heaper = new MaxHeap();
-console.log(heaper.insert(80))
+// let heaper = new MaxHeap();
+// console.log(heaper.insert(80));
