@@ -21,46 +21,85 @@ class MaxBinaryHeap{
         return arr;
     }
 
-    swap(){
-        let arr = this.values;
-        let currIdx = 0; 
-        const length = arr.length;
-        const curr = arr[0]
+    // swap(){
+    //     let arr = this.values;
+    //     let currIdx = 0; 
+    //     const length = arr.length;
+    //     const curr = arr[0]
 
-        while(true){
-            let child1Idx = (2 * currIdx) + 1;
-            let child2Idx = (2 * currIdx) + 2;
-            let child1 ,child2; 
-            let swap = null;
+    //     while(true){
+    //         let child1Idx = (2 * currIdx) + 1;
+    //         let child2Idx = (2 * currIdx) + 2;
+    //         let child1 ,child2; 
+    //         let swap = null;
 
-            if( child1Idx < length){
-                child1 = arr[child1Idx];
-                if(child1 > curr){
-                    swap = child1Idx;
-                }
-            } 
-            if(child2Idx < length){
-                child2 = arr[child2Idx];
-                if(
-                    (swap === null && child2 > curr) || 
-                    (swap !== null && child2 > child1)){
-                    swap = child2Idx;
-                }
-            }
-            if(swap === null) break;
-            arr[currIdx] = arr[swap];
-            arr[swap] = curr;
-            currIdx = swap;
-       }
-    }
+    //         if( child1Idx < length){
+    //             child1 = arr[child1Idx];
+    //             if(child1 > curr){
+    //                 swap = child1Idx;
+    //             }
+    //         } 
+    //         if(child2Idx < length){
+    //             child2 = arr[child2Idx];
+    //             if(
+    //                 (swap === null && child2 > curr) || 
+    //                 (swap !== null && child2 > child1)){
+    //                 swap = child2Idx;
+    //             }
+    //         }
+    //         if(swap === null) break;
+    //         arr[currIdx] = arr[swap];
+    //         arr[swap] = curr;
+    //         currIdx = swap;
+    //    }
+    // }
+
+    // extractMax(){
+    //     const arr = this.values;
+    //     const maxVal = arr[0];
+    //     const lastVal = arr.pop();
+    //     arr[0] = lastVal;
+    //     this.swap();
+    //     return maxVal;
+    // }
+
 
     extractMax(){
-        const arr = this.values;
-        const maxVal = arr[0];
-        const lastVal = arr.pop();
-        arr[0] = lastVal;
-        this.swap();
-        return maxVal;
+        const values = this.values;
+        const max = value[0];
+        const end = values.pop();
+        value[0] = end;
+        this.sink();
+        return max;
+    }
+
+        //[55,39,41,18,27,12,33]
+    sink(){
+        const values = this.values;
+        let idx = 0;
+        const length = values.length; //7
+        const element = values[0]; //33
+        while(true){
+            let leftChildIdx = 2 * idx + 1;
+            let rightChildIdx = 2 * idx + 2;
+            let left, right;
+            let swap = null;
+            if(leftChildIdx < length){
+                left = values[leftChildIdx];
+                if(left > element){
+                    swap = leftChildIdx;
+                }
+            }
+            if(rightChildIdx < length){
+                right = values[rightChildIdx];
+                if(swap === null &&  right > element){
+                    swap = rightChildIdx;
+                }
+            }
+
+            if(swap === null) break;
+        }
+
     }
 
     
@@ -130,3 +169,5 @@ class MaxHeap{
 
 // let heaper = new MaxHeap();
 // console.log(heaper.insert(80));
+
+
