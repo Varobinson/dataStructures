@@ -1,4 +1,5 @@
 //adjacency list 
+//unweighted and undirected graph
 
 class Graph{
     constructor(){

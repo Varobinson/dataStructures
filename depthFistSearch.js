@@ -58,4 +58,3 @@ function inOrder(root){
     traverse(current);
     return data;
 }
-  
