@@ -1,4 +1,4 @@
-//Recursive
+//Graph BFS
 class Graph{
     constructor(){
         this.adjacencyList = {};
@@ -29,29 +29,32 @@ class Graph{
         delete list[vertex];
     }
 
-    DFSRecursive(vertex){
-        const results = [];
-        const visited = {};
-        const list = this.adjacencyList;
-        function DFSHelper(v){
-            if(!v) return null;
-            visited[v] = true;
-            results.push(v);
-             list[v].forEach(val => {
-                if(!visited[val]){
-                    return DFSHelper(val);
-                }
-            }
-            )
-        }
-        DFSHelper(vertex);
-        return results;
-    }
 
 
     
+}
+
+const BFS = (start) =>{
+    const list = graph.adjacencyList,
+    visited = {},
+    queue = [start],
+    result = [];
+    visited[start] = true;
+    while(queue.length){
+        let vertex = queue.shift();
+        result.push(vertex);
+        list[vertex].forEach(val => {
+        if(!visited[val]){
+            visited[val] = true;
+                queue.push(val);
+            }
+        })
+    }
+    return result;
 
 }
+    
+
 
 let graph = new Graph();
 
@@ -72,26 +75,4 @@ graph.addEdge('E','F');
 
 console.log(graph);
 
-//ITERATIVE
-
-const DFSIterative = (start) =>{
-    const results = [];
-    const discovered = {};
-    const stack = [];
-    let list = graph.adjacencyList;
-    stack.push(start);
-    while(stack.length){
-        let vertex = stack.pop();
-        if(!discovered[vertex]){
-            discovered[vertex] = true;
-            results.push(vertex);
-            list[vertex].forEach(val => {
-                stack.push(val);
-        })
-        }
-    }
-    return results;
-}
-
-console.log(DFSIterative('A'));
-
+console.log(BFS('A'))
