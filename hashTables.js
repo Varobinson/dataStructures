@@ -45,3 +45,10 @@ class HashTable{
         _hash(key)
     }
 }
+
+// hash table 2
+class HashTable2{
+    constructor(){
+        
+    }
+}
