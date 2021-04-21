@@ -86,3 +86,22 @@ console.log(myHash.getHash('item2'))
 myHash.removeHash('item2')
 console.log(myHash)
 console.log(myHash.getHash('item2'))
+
+// console.log(''.charCodeAt()-96)
+
+
+// function caesarCipherEncryptor(string, key) {
+//     const arr = [];
+
+//     for(let i = 0; i < string.length; i++){
+//           if(string[i].charCodeAt() + key > 122){
+//             arr.push(String.fromCharCode(string[i].charCodeAt() + key % 26));
+//           }
+//           else{
+//             arr.push(String.fromCharCode(string[i].charCodeAt() + key));
+//         }
+//       }
+//       console.log( 25 % 26);
+//   }
+  
+//   caesarCipherEncryptor('abc', 52)
