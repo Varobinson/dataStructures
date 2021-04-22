@@ -79,3 +79,4 @@ const mSort = (arr) => {
     let right = mSort(arr.slice(mid));
     return sort(left, right);
 };
+
