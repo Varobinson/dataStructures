@@ -1,0 +1,9 @@
+var missingNumber = function(nums) {
+    let sum = nums.length;
+    for(let i = 0; i < nums.length; i++){
+        sum += i - nums[i]; 
+    }
+    return sum;
+};
+
+console.log(missingNumber([0,3,2,5,1]))
