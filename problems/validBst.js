@@ -54,3 +54,6 @@ for(let i = 1 ; i < values.length; i++){
 }
 console.log(BFS(root));
 
+let s = 'abc'
+console.log(s[1]);
+
