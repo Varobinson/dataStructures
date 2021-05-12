@@ -1,3 +1,4 @@
+const { findSourceMap } = require("module");
 
   
   class BinaryTree {
@@ -52,26 +53,25 @@
     const tree = new BinaryTree(1).insert([2, 3, 4, 5, 6, 7, 8, 9]);
     const invertedTree = new BinaryTree(1).invertedInsert([2, 3, 4, 5, 6, 7, 8, 9]);
  
+    console.log(tree)
     const bFirstS = (root) =>{
-        let queue = [],
-            result = []
-            current = root;
+        const queue = [],
+              result = [];
         queue.push(root);
-        
-        while(queue.length){
+        let current;
+        while (queue.length){
             current = queue.shift();
-            result.push(current.value);
+            result.push(current.value)
             if(current.left) queue.push(current.left);
-            if(current.right) queue.push(current.right);
-        }
-        return result;
+            if(current.left) queue.push(current.right);
+        }return result;
     }
 
-    console.log(bFirstS(tree))
+    // console.log(bFirstS(tree))
 
 
 
-console.log(tree)
+// console.log(tree)
 
   function invertBinaryTree(tree) {
     const current = tree;
@@ -85,5 +85,45 @@ console.log(tree)
   traverseSwap(current);
   return current;
   }
-  invertBinaryTree(tree)
-  console.log(bFirstS(tree))
+  // invertBinaryTree(tree)
+//   console.log(bFirstS(tree))
+
+// function findSuccessor(bTree, node) {
+// 	const values = dfs(bTree);
+  
+// 	for(let i = 0; i < values.length; i++){
+// 		if( values[i].value !== node) continue;
+// 		if(i === values.length - 1) return null;
+// 		return values[i + 1];
+// 	} 
+// }
+// function dfs(node, nodeValues = []){
+  
+//   if(node.left)dfs(node.left,  nodeValues);
+//   nodeValues.push(node);
+//   if(node.right)dfs(node.right,  nodeValues);
+//   return nodeValues;
+// }
+// dfs(tree)
+// console.log(findSuccessor(tree, 5))
+
+
+function findSuccessor(tree, node) {
+	const nodeValues = [];
+	
+	function dfs(node){
+		if(node.left)dfs(node.left,  nodeValues);
+		nodeValues.push(node);
+		if(node.right)dfs(node.right ,  nodeValues);
+	}
+	dfs(tree);
+	for(let i = 0; i < nodeValues.length; i++){
+		const curr = nodeValues[i];
+		if( curr !== node) continue;
+		
+		if(i === values.length - 1) return null;
+		
+		return values[i + 1];
+	} 
+}
+findSuccessor(tree)
