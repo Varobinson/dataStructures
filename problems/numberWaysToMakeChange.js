@@ -40,3 +40,6 @@ function countZeroes(arr){
     } return counter;
   }
   console.log(countZeroes([1,1,1,1,0,0]))
+
+
+  console.log()
