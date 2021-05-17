@@ -40,3 +40,32 @@ function tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest) {
   }
 
   console.log(tandemBicycle(bike['redShirtSpeeds'], bike['blueShirtSpeeds'], false))
+
+
+
+function reverseArray(arr){
+    let start = 0;
+    let end = arr.length -1;
+    while(start < end){
+         [arr[start], arr[end]] = [arr[end], arr[start]];
+        start++;
+        end--;
+
+    }return arr;
+}
+
+const blue = [2,5,37,1,9]
+blue.sort((a,b) => a - b);
+
+
+
+
+console.log(reverseArray(blue))
+
+
+
+
+
+
+
+
