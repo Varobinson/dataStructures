@@ -32,5 +32,5 @@ function isPal(str){
     }
     return true;
 }
-
-console.log(findPal('aba'))
+const string = 'dkfoddj'
+console.log(string[6])
