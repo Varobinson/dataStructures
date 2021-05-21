@@ -1,11 +1,8 @@
-const word = 'gate here read eve';
+const word = [1,2,3,4,5,6];
 
-function run(str){
+function run(arr){
     let i = 0,
-        j = str.length - 1;
-    
-    const arr = str.split(' ');
-    console.log(arr)
+        j = arr.length - 1;
     while(i < j){
         [arr[i], arr[j]] = [arr[j], arr[i]];
         i++;
