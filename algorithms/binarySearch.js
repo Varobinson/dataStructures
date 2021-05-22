@@ -22,15 +22,16 @@
 
 // binary search es6 time 0(logn) space 0(1) better than recursion
 
-let nums = [1,2,3,4,5,6,7,8]; 
+let nums = [1,1,1,1,1]; 
 
-const bSearch = (arr,val) => {
+const bSearch = (arr) => {
     let start = 0;
     let end = arr.length - 1; //7
     while(start <= end){
         let mid = Math.floor((start + end) / 2);
-        if(val === arr[mid]) return mid;
-        if(val > arr[mid]){
+        if(arr[start] === 1) return 0;
+        if(arr[mid] === 1 && arr[mid - 1] === 0) return mid;
+        if(1 > arr[mid]){
             start = mid + 1;
         }else{
             end = mid - 1;
@@ -39,7 +40,7 @@ const bSearch = (arr,val) => {
     return -1;
 }
 
-console.log(bSearch(nums,7));
+console.log(bSearch(nums));
 
 
 // recursive version time 0(logn) space 0(logn) counts callstack
