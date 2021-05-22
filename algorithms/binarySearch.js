@@ -63,3 +63,11 @@ console.log(bSearch(nums));
 
 
 
+
+
+
+
+
+
+
+
