@@ -58,3 +58,18 @@ function sortedSquaredArray(array) {
 }
 
 console.log(sortedSquaredArray(array))
+
+
+function binarySearch(arr, num){
+    let start = 0;
+    let end = arr.length - 1;
+    let mid = Math.floor((start + end) / 2);
+    if(arr[end] === num) return end;
+    if(arr[start] === num) return start;
+    while (start < end && arr[mid] !== num){
+         mid = Math.floor((start + end) / 2);
+       
+        if(arr[mid] > num) end = mid - 1 ;
+        else start = mid + 1;
+    }return arr[mid] === num ? mid: -1 ;
+  }
