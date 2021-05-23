@@ -46,3 +46,15 @@ const bSearch = (row) =>{
 }
 
 console.log(findFirst(matrix));
+
+const array = [1,2,3]
+
+function sortedSquaredArray(array) {
+	const results = [];
+  for(let num of array){
+		results.push(num*num);
+	}
+  return results.sort((a,b) =>a-b);
+}
+
+console.log(sortedSquaredArray(array))

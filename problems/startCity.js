@@ -14,4 +14,4 @@ function validStartingCity(distances, fuel, mpg) {
         if(milesLeft >= 0) return i;
     }
     return -1;
-  }
+}
