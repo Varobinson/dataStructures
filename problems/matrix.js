@@ -32,7 +32,7 @@ const findFirst = (arr) =>{
 
 const bSearch = (row) =>{
     let start = 0;
-    let end = row.length;
+    let end = row.length - 1;
 
     while(start < end){
         let mid = Math.floor((start + end)/2);
@@ -73,3 +73,59 @@ function binarySearch(arr, num){
         else start = mid + 1;
     }return arr[mid] === num ? mid: -1 ;
   }
+
+
+  const trix = [
+    [0,0,0,1,1],
+    [0,0,0,1,1],
+    [0,0,1,1,1]
+]
+
+/*
+trix[row][col]
+trix [2][2]
+return col = 2
+
+O(n*m)
+cols = trix[0].length
+rows = trix.length
+for loop through col
+    for loop through rows
+    if trix[row][col] equals 1 return col
+return -1
+
+minValue Infinity
+for vals in row 
+minValue  math min min value and call binary helper row //
+
+
+binary helper arr
+start 0
+end arr length
+if start is 1 return 0
+while start less or equal to end
+    mid equals math floor start plus end 
+    if mid equals 1 and mid -1 equals 0 return mid
+    if mid is 0 start equals mid
+    else end equals mid 
+*/
+
+const findTheOne = (matrix) =>{
+    let min = Infinity;
+    for(const row of matrix){
+        min = Math.min(min,searchHelper(row));
+    }return min;
+}
+const searchHelper = (row) =>{
+    let start = 0;
+    let end = row.length - 1;
+    if(row[start] === 1)return 0;
+    while(start <= end){
+        let mid = Math.floor((start + end) / 2);
+        if(row[mid] === 1 && row[mid - 1] === 0) return mid;
+        else if(row[mid] === 0) start = mid;
+        else end = mid;
+    }return Infinity;
+}
+
+console.log(findTheOne(trix))

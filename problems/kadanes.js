@@ -23,3 +23,5 @@ function kadanesAlgorithm(array) {
       }
       return overallMax;
   }
+
+  console.log(2%26)

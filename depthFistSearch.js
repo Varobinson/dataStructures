@@ -14,6 +14,9 @@ function PreOrder(root){
     traverse(current);
     return data;
 }
+const arr = [1,2,3];
+const copy = [...arr]
+console.log(copy)
 
 //Post order
 
