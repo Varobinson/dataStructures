@@ -17,3 +17,24 @@ function findThreeLargestNumbers(array) {
       }return results;
   }
   console.log(findThreeLargestNumbers(arr))
+
+  function getNthFib(n) {
+    let [a,b] = [0,1];
+    while(n > 1){
+      [a,b] = [b, a+b];
+      n--;
+    }
+    return a;
+  }
+
+
+  function searchMatrix(matrix, target){
+    let row = 0;
+    let col = matrix[0].length -1;
+    while (row < matrix.length && col >= 0){
+      if(matrix[row][col] > target) col--;
+      else if(matrix[row][col] < target) row++;
+      else return [row,col];
+    }
+    return [-1,-1];
+  }
