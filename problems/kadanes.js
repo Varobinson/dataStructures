@@ -22,6 +22,17 @@ function kadanesAlgorithm(array) {
               overallMax = Math.max(overallMax, currentMax);
       }
       return overallMax;
-  }
-
+  } // [^a-z0-9]+/g
+charCodeAt()
+String.fromCharCode() // 97 - 122 a-z
   console.log(2%26)
+  
+  function isValidSubsequence(array, sequence) {
+    let seqIdx = 0;
+     for(let value of array){
+         if(sequence[seqIdx] === value) seqIdx++;
+         if(seqIdx === sequence.length) return true;
+     }
+     return false;
+ }
+ 
